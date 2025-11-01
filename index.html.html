@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Laiba Abid — Portfolio</title>
+<style>
+    :root{
+      --bg:#0f1220; --card:#151935; --muted:#9fb0ff; --text:#eef1ff; --accent:#6ea8ff; --accent-2:#9BE2F2;
+      --radius:18px; --radius-sm:14px; --shadow:0 10px 30px rgba(0,0,0,.25);
+      --max:1160px;
+    }
+    *{box-sizing:border-box} html,body{margin:0}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(110,168,255,.2), transparent 60%),
+                  linear-gradient(180deg, #0c0f1a 0%, #0f1220 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration: none}
+    a:hover{color:var(--accent-2); text-decoration: underline}
+    img{max-width:100%; display:block}
+
+    .container{width:min(100%, var(--max)); margin-inline:auto; padding:28px 22px}
+    header{padding:28px 0 8px; border-bottom:1px solid rgba(255,255,255,.08)}
+    nav{display:flex; gap:18px; flex-wrap:wrap}
+    nav a{opacity:.9}
+    h1{font-size: clamp(28px, 4vw, 40px); margin:.2rem 0 1rem}
+    h2{font-size: clamp(22px, 3vw, 28px); margin:0 0 1rem}
+    p.lead{color:var(--muted); max-width:70ch; margin:.5rem 0 1.25rem}
+
+    .section{margin:34px 0 18px}
+    .section > h2{display:flex; align-items:center; gap:10px}
+    .section > h2::after{
+      content:""; flex:1; height:1px; background:linear-gradient(90deg, rgba(255,255,255,.18), transparent);
+    }
+
+    .grid{display:grid; gap:22px}
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card.pad{padding:22px}
+
+    .hero{
+      background: linear-gradient(180deg, rgba(155,226,242,.10), rgba(110,168,255,.08) 40%, transparent);
+      border:1px solid rgba(110,168,255,.15);
+    }
+
+    .featured{
+      background: radial-gradient(600px 220px at 10% -10%, rgba(110,168,255,.18), transparent 60%),
+                  linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(110,168,255,.25);
+      position:relative;
+    }
+    .badge{
+      position:absolute; top:12px; right:12px;
+      font-size:12px; font-weight:600; color:#09111f; background:var(--accent-2);
+      padding:6px 10px; border-radius:999px; letter-spacing:.2px;
+    }
+
+    .cases .item{display:grid; grid-template-columns: 1fr; gap:10px}
+    .tag{display:inline-block; font-size:12px; color:#09111f; background: var(--accent-2);
+      padding:6px 10px; border-radius: 999px; margin-right:8px}
+    .bullets{margin:.35rem 0 0; padding-left:18px}
+    .bullets li{margin:.2rem 0}
+
+    .testimonials .grid{
+      grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+    @media (max-width: 720px){
+      .testimonials .grid{grid-template-columns: 1fr;}
+    }
+    .t-card{display:grid; grid-template-columns: 220px 1fr; gap:18px; align-items:center}
+    @media (max-width: 900px){
+      .t-card{grid-template-columns: 160px 1fr;}
+    }
+    .t-card img{
+      width: 100%; max-width: 480px; border-radius: var(--radius-sm);
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+    }
+    .t-card .who{font-weight:600}
+    .t-card .role{color:var(--muted); font-size:14px; margin-top:2px}
+    .t-card .quote{margin-top:6px; font-size:1.05rem}
+
+    .certs .grid{
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      align-items: start;
+    }
+    @media (max-width: 720px){
+      .certs .grid{grid-template-columns: 1fr;}
+    }
+    .cert{
+      display:flex; flex-direction:column; gap:12px; padding:16px;
+    }
+    .cert img{
+      width:100%;
+      max-width: 520px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow: var(--shadow);
+      margin-inline:auto;
+      background:#0b0e1a;
+    }
+    .cert .title{font-weight:600; font-size:1.05rem}
+    .cert .meta{font-size:13px; color:var(--muted)}
+
+    .contact .card{display:flex; gap:18px; flex-wrap:wrap}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:10px 14px;
+      border-radius:999px; background:#101530; border:1px solid rgba(255,255,255,.08)}
+
+    footer{color:rgba(238,241,255,.55); font-size:14px; text-align:center; padding:30px 0}
+  </style>
+</head>
+<body>
+<div class="container">
+<header>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#certs">Certifications</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <h1>Laiba Abid</h1>
+  <p class="lead">
+    Implementation &amp; onboarding specialist for enterprise restaurants and retail—web, apps, POS,
+    KDS, printers, delivery systems &amp; back-office integrations (Linnworks, Sellercloud, payment gateways).
+  </p>
+</header>
+
+<section class="section" id="about">
+  <div class="card hero pad">
+    <h2>About</h2>
+    <p>
+      I’m a results-oriented professional with 3+ years of experience delivering scalable SaaS, E-commerce, and automation solutions for global brands. I specialize in system integration, process optimization, and product implementation—bridging the gap between technical development and business outcomes.
+    </p>
+    <p>
+      Skilled in AI product prototyping, API configuration, POS &amp; ERP integrations, and data-driven onboarding workflows, I focus on creating tools and processes that simplify operations and deliver measurable impact.
+    </p>
+  </div>
+</section>
+
+<section class="section cases" id="portfolio">
+  <h2>Portfolio / Case Studies</h2>
+  <div class="grid" style="grid-template-columns:1fr; gap:22px">
+    <article class="card pad item featured">
+      <div class="badge">Featured</div>
+      <div>
+        <span class="tag">Side Project · AI</span>
+        <strong>AI Website Builder for Restaurant Onboarding</strong>
+      </div>
+      <ul class="bullets">
+        <li>Smart Theme Selection: Logo analysis for automatic color palette and font matching.</li>
+        <li>AI Content Generation: Automated brand voice, menu descriptions, and marketing copy based on cuisine type.</li>
+        <li>Intelligent Image Management: Dual-source system with API links to 3 external menu databases plus curated local library (1000+ images).</li>
+        <li>Auto-Population: Cuisine-based image matching and gallery creation.</li>
+        <li>Projected Impact: 80% reduction in manual content creation time (from 45–60 minutes to ~10 minutes per website).</li>
+        <li>Business Value: Expected to save 200+ manual hours monthly across onboarding team.</li>
+        <li><strong>Technologies:</strong> AI/ML, OpenAI, API Integration, Cursor AI, Node.js, React, JavaScript</li>
+      </ul>
+    </article>
+
+    <article class="card pad item">
+      <div>
+        <span class="tag">Retail</span>
+        <a href="https://linenmart.ca" rel="noopener" target="_blank">linenmart.ca</a>
+      </div>
+      <ul class="bullets">
+        <li>Built the site and uploaded entire inventory to Backoffice.</li>
+        <li>Integrated payment gateway; configured taxes, shipping, and confirmations.</li>
+        <li>Synced catalog &amp; stock with <strong>Linnworks</strong> and <strong>Sellercloud</strong>.</li>
+      </ul>
+    </article>
+
+    <article class="card pad item">
+      <div>
+        <span class="tag">Hospitality · Enterprise</span>
+        <a href="https://eskimo.ie" rel="noopener" target="_blank">Eskimo.ie</a> &nbsp;•&nbsp;
+        <a href="https://lams.ie" rel="noopener" target="_blank">Lams.ie</a>
+      </div>
+      <ul class="bullets">
+        <li>Onboarded both brands with multi-location setup and enterprise workflows.</li>
+        <li>Connected POS across locations; standardized menus and reporting.</li>
+      </ul>
+    </article>
+
+    <article class="card pad item">
+      <div>
+        <span class="tag">Restaurants</span>
+        <a href="https://bombaypantry.com" rel="noopener" target="_blank">bombaypantry.com</a>
+      </div>
+      <ul class="bullets">
+        <li>Award-winning Indian takeaway—onboarded web, Android &amp; iOS ordering.</li>
+        <li>Delivery management, POS, KDS, and printer setup end-to-end.</li>
+      </ul>
+    </article>
+
+    <article class="card pad item">
+      <div>
+        <span class="tag">QSR · Multi-location (10+)</span>
+        <a href="https://sushihandroll.co.uk" rel="noopener" target="_blank">sushihandroll.co.uk</a>
+      </div>
+      <ul class="bullets">
+        <li>Onboarded 10+ UK sites on POS &amp; KIOSKs; built web, Android &amp; iOS apps.</li>
+        <li>Implemented operational flows for kitchen &amp; fulfillment devices.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section certs" id="certs">
+  <h2>Certifications</h2>
+  <div class="grid">
+    <article class="card cert">
+      <a href="assets/certs/google-analytics-certification.pdf" rel="noopener" target="_blank">
+        <img alt="Google Analytics Certification thumbnail" src="assets/certs/google-analytics-certification-thumb.jpg"/>
+      </a>
+      <div class="title">Google Analytics Certification</div>
+      <div class="meta">Google · View certificate (PDF)</div>
+    </article>
+    <article class="card cert">
+      <a href="assets/certs/google-ads-measurement-certification.pdf" rel="noopener" target="_blank">
+        <img alt="Google Ads Measurement Certification thumbnail" src="assets/certs/google-ads-measurement-certification-thumb.jpg"/>
+      </a>
+      <div class="title">Google Ads Measurement Certification</div>
+      <div class="meta">Google · View certificate (PDF)</div>
+    </article>
+    <article class="card cert">
+      <a href="assets/certs/google-tag-manager-fundamentals.pdf" rel="noopener" target="_blank">
+        <img alt="Google Tag Manager Fundamentals thumbnail" src="assets/certs/google-tag-manager-fundamentals-thumb.jpg"/>
+      </a>
+      <div class="title">Google Tag Manager Fundamentals</div>
+      <div class="meta">Google · View certificate (PDF)</div>
+    </article>
+    <article class="card cert">
+      <a href="assets/certs/ga4-deeper-data-reports.pdf" rel="noopener" target="_blank">
+        <img alt="Dive Deeper into GA4 Data &amp; Reports thumbnail" src="assets/certs/ga4-deeper-data-reports-thumb.jpg"/>
+      </a>
+      <div class="title">Dive Deeper into GA4 Data &amp; Reports</div>
+      <div class="meta">Google · View certificate (PDF)</div>
+    </article>
+  </div>
+</section>
+
+<section class="section testimonials" id="testimonials">
+  <h2>Client Testimonials</h2>
+  <div class="grid">
+    <article class="card pad t-card">
+      <img alt="Client review screenshot 1" src="assets/review1.png"/>
+      <div>
+        <div class="who">Client Review</div>
+        <div class="role">Platform feedback</div>
+        <p class="quote">“Laiba delivered fast and handled all the tricky bits—menus, devices, and payments—so we could go live smoothly.”</p>
+      </div>
+    </article>
+    <article class="card pad t-card">
+      <img alt="Client review screenshot 2" src="assets/review2.png"/>
+      <div>
+        <div class="who">Client Review</div>
+        <div class="role">Operations &amp; roll-out</div>
+        <p class="quote">“End-to-end onboarding across locations; great attention to detail and proactive communication.”</p>
+      </div>
+    </article>
+    <article class="card pad t-card">
+      <img alt="Client review screenshot 3" src="assets/review3.png"/>
+      <div>
+        <div class="who">Client Review</div>
+        <div class="role">POS / KDS / Printers</div>
+        <p class="quote">“Devices and printers were ready day one—team training and SOPs included.”</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <h2>Contact</h2>
+  <div class="card pad">
+    <span class="pill">📧 laibaab27@gmail.com</span>
+    <span class="pill">🌐 laibaabid27.github.io/laiba-portfolio</span>
+  </div>
+</section>
+
+<footer>© <script>document.write(new Date().getFullYear())</script> Laiba Abid</footer>
+</div>
+</body>
+</html>
